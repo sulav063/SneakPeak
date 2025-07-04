@@ -116,119 +116,109 @@ body {
 }
 
 /* MODAL POPUPS */
+/* Login & Signup Popup */
 .login-popup {
     display: none;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
     position: fixed;
-    z-index: 1050;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90%;
-    max-width: 500px;
-    background-color: #fff;
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
-    padding: 30px 25px;
-    font-family: 'Inter', sans-serif;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
 }
 
-.login-popup .popup-content {
-    position: relative;
-}
-
-.login-popup h3 {
-    font-size: 26px;
-    font-weight: 700;
-    margin-bottom: 20px;
-    color: #333;
-    text-align: center;
-}
-
-.login-popup form {
+.login-popup.active {
     display: flex;
-    flex-direction: column;
-    gap: 15px;
+    opacity: 1;
+    pointer-events: auto;
 }
 
-.login-popup input[type="email"],
-.login-popup input[type="password"],
-.login-popup input[type="text"] {
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 15px;
-    outline: none;
+.popup-content {
+    background: white;
+    padding: 30px 40px;
+    border-radius: 12px;
+    max-width: 400px;
+    width: 100%;
+    position: relative;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
-.login-popup button[type="submit"] {
-    padding: 12px;
-    background-color: #333;
-    color: #fff;
+.close-popup {
+    position: absolute;
+    top: 18px;
+    right: 22px;
+    background: transparent;
     border: none;
-    border-radius: 6px;
-    font-weight: 600;
+    font-size: 24px;
     cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
+    color: #222;
 }
 
-.login-popup button[type="submit"]:hover {
-    background-color: #555;
-}
-
-.google-login {
-    margin: 20px 0;
-    text-align: center;
-}
-
-.signup-text {
-    text-align: center;
+form input {
+    width: 100%;
+    padding: 12px 14px;
+    margin-bottom: 18px;
+    border: 1.5px solid #ddd;
+    border-radius: 8px;
     font-size: 14px;
 }
 
+form button {
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding: 12px 14px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #111;
+}
+
+.signup-text {
+    margin-top: 12px;
+    font-size: 14px;
+    text-align: center;
+}
+
 .signup-text a {
-    color: #007BFF;
+    color: #3a86ff;
     text-decoration: none;
-    font-weight: 500;
+    cursor: pointer;
 }
 
 .signup-text a:hover {
     text-decoration: underline;
 }
 
-.close-popup {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 22px;
-    cursor: pointer;
-    color: #888;
-}
-
-.close-popup:hover {
-    color: #333;
-}
-
 
 /* ========== HERO BANNER ========== */
 .hero-banner {
-    max-height: 650px;
+    max-height: 600px;
     overflow: visible;
     position: relative;
 }
 
 .carousel-image {
-    height: 610px;
+    height: 630px;
     width: 100%;
     object-fit: cover;
     object-position: center;
 }
 
-/* Carousel controls in top-right */
 #heroCarousel .carousel-control-prev,
 #heroCarousel .carousel-control-next {
     position: absolute;
-    top: 15px;
+    top: 50%;
+    /* center vertically */
+    transform: translateY(-50%);
     width: 40px;
     height: 40px;
     background-color: rgba(0, 0, 0, 0.5);
@@ -240,6 +230,7 @@ body {
     z-index: 20;
     transition: background-color 0.3s ease;
 }
+
 
 #heroCarousel .carousel-control-prev {
     right: 65px;
