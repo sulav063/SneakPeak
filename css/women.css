@@ -1,0 +1,337 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+/* === GENERAL RESET === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* === HEADER === */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background-color: #111;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-title a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-title a:hover {
+    color: #3a86ff;
+    text-decoration: none;
+}
+
+.header-logo {
+    height: 90px;
+}
+
+.brand-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.nav-links a.nav-item {
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-links a.nav-item:hover {
+    color: #3a86ff;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #222;
+    top: 28px;
+    left: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    border-radius: 4px;
+    z-index: 10;
+    min-width: 140px;
+}
+
+.dropdown-content a {
+    padding: 8px 16px;
+    display: block;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: #3a86ff;
+    color: white;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.nav-actions {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.search-box {
+    padding: 8px 14px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    width: 180px;
+    font-size: 14px;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    filter: brightness(0) invert(1); /* makes black icons appear white */
+}
+
+/* === LOGIN & SIGNUP POPUP === */
+.login-popup {
+    display: none;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.login-popup.active {
+    display: flex;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.popup-content {
+    background: white;
+    padding: 30px 40px;
+    border-radius: 12px;
+    max-width: 400px;
+    width: 100%;
+    position: relative;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.close-popup {
+    position: absolute;
+    top: 18px;
+    right: 22px;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #222;
+}
+
+form input {
+    width: 100%;
+    padding: 12px 14px;
+    margin-bottom: 18px;
+    border: 1.5px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+form button {
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding: 12px 14px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #111;
+}
+
+.signup-text {
+    margin-top: 12px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.signup-text a {
+    color: #3a86ff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.signup-text a:hover {
+    text-decoration: underline;
+}
+
+/* === PRODUCT GRID === */
+.shoe-item img {
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+    margin-bottom: 10px;
+}
+
+.shoe-item img:hover {
+    transform: scale(1.03);
+}
+
+.arrival-info {
+    background-color: #fff;
+    padding: 10px 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.arrival-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #222;
+    margin: 0 0 5px;
+}
+
+.arrival-price {
+    font-size: 15px;
+    color: #3a86ff;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* === FOOTER === */
+.footer {
+    background-color: #111;
+    color: #fff;
+    padding: 60px 40px 40px;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #333;
+}
+
+.footer-logo {
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.footer-column h4 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 8px;
+}
+
+.footer-column ul li a {
+    color: #ccc;
+    text-decoration: none;
+}
+
+.footer-column ul li a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.payment-image {
+    margin-top: 10px;
+    max-width: 100%;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 20px 10px;
+    font-size: 13px;
+    color: #aaa;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+    .main-header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .search-box {
+        width: 100%;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .popup-content {
+        padding: 20px;
+    }
+}
