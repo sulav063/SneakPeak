@@ -535,33 +535,42 @@ section {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
     margin-bottom: 20px;
+    max-width: 500px;
+    margin-inline: auto;
 }
 
 .newsletter-input {
-    padding: 10px 16px;
-    width: 300px;
-    max-width: 100%;
+    flex: 1 1 auto;
+    min-width: 250px;
+    max-width: 400px;
+    padding: 8px 10px;
     border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 15px;
+    border-radius: 4px;
+    font-size: 14px;
 }
 
 .newsletter-button {
-    padding: 10px 20px;
+    flex: 0 0 auto;
+    padding: 4px 10px;
+    /* tighter padding */
     background-color: #333;
     color: #fff;
     border: none;
-    font-weight: 600;
-    border-radius: 6px;
+    font-weight: 500;
+    border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-size: 12px;
+    /* smaller text */
+    line-height: 1.2;
 }
 
 .newsletter-button:hover {
     background-color: #111;
 }
+
 
 .newsletter-privacy {
     font-size: 13px;
