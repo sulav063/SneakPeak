@@ -1,5 +1,3 @@
-// login.js
-
 document.addEventListener("DOMContentLoaded", () => {
     const loginPopup = document.getElementById("loginPopup");
     const signupPopup = document.getElementById("signupPopup");
@@ -9,69 +7,56 @@ document.addEventListener("DOMContentLoaded", () => {
     const showSignupBtn = document.getElementById("showSignup");
     const showLoginBtn = document.getElementById("showLogin");
 
-    const closeLoginBtn = document.getElementById("closeLogin");
-    const closeSignupBtn = document.getElementById("closeSignup");
+    const closeButtons = document.querySelectorAll(".close-popup");
 
     // Show login popup
-    loginIcon.addEventListener("click", () => {
-        loginPopup.style.display = "flex";
-        loginPopup.classList.add("active");
-        signupPopup.style.display = "none";
-        signupPopup.classList.remove("active");
+    loginIcon?.addEventListener("click", () => {
+        showPopup(loginPopup);
+        hidePopup(signupPopup);
     });
 
-    // Show signup popup from login popup
-    showSignupBtn.addEventListener("click", (e) => {
+    // Switch to signup popup
+    showSignupBtn?.addEventListener("click", (e) => {
         e.preventDefault();
-        loginPopup.style.display = "none";
-        loginPopup.classList.remove("active");
-
-        signupPopup.style.display = "flex";
-        signupPopup.classList.add("active");
+        hidePopup(loginPopup);
+        showPopup(signupPopup);
     });
 
-    // Show login popup from signup popup
-    showLoginBtn.addEventListener("click", (e) => {
+    // Switch back to login popup
+    showLoginBtn?.addEventListener("click", (e) => {
         e.preventDefault();
-        signupPopup.style.display = "none";
-        signupPopup.classList.remove("active");
-
-        loginPopup.style.display = "flex";
-        loginPopup.classList.add("active");
+        hidePopup(signupPopup);
+        showPopup(loginPopup);
     });
 
-    // Close login popup
-    closeLoginBtn.addEventListener("click", () => {
-        loginPopup.style.display = "none";
-        loginPopup.classList.remove("active");
+    // Close buttons in either popup
+    closeButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            hidePopup(loginPopup);
+            hidePopup(signupPopup);
+        });
     });
 
-    // Close signup popup
-    closeSignupBtn.addEventListener("click", () => {
-        signupPopup.style.display = "none";
-        signupPopup.classList.remove("active");
-    });
-
-    // Close modal when clicking outside the popup content
+    // Close popups when clicking outside content
     [loginPopup, signupPopup].forEach((popup) => {
-        popup.addEventListener("click", (e) => {
+        popup?.addEventListener("click", (e) => {
             if (e.target === popup) {
-                popup.style.display = "none";
-                popup.classList.remove("active");
+                hidePopup(popup);
             }
         });
     });
-});
 
-// Get the login popup and close button
-const loginPopup = document.getElementById('loginPopup');
-const closeButtons = document.querySelectorAll('.close-popup');
+    // Utility: show popup
+    function showPopup(popup) {
+        if (!popup) return;
+        popup.style.display = "flex";
+        popup.classList.add("active");
+    }
 
-// Add event listener for all close buttons (in login and signup popups)
-closeButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        // Remove 'active' class to hide popup
-        loginPopup.classList.remove('active');
-        signupPopup.classList?.remove('active'); // in case you have signup popup
-    });
+    // Utility: hide popup
+    function hidePopup(popup) {
+        if (!popup) return;
+        popup.style.display = "none";
+        popup.classList.remove("active");
+    }
 });
