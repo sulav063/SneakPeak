@@ -4,23 +4,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let isDropdownOpen = false;
 
-    shopToggle.addEventListener("click", (e) => {
-        e.stopPropagation();
+    shopToggle.addEventListener("click", function (e) {
+        e.preventDefault();       // prevent default link behavior, if any
+        e.stopPropagation();      // stop the click from bubbling
         isDropdownOpen = !isDropdownOpen;
-        shopMenu.style.display = isDropdownOpen ? "block" : "none";
+
+        if (isDropdownOpen) {
+            shopMenu.classList.add("open");
+        } else {
+            shopMenu.classList.remove("open");
+        }
     });
 
     document.addEventListener("click", function (e) {
-        if (!shopMenu.contains(e.target) && !shopToggle.contains(e.target)) {
-            shopMenu.style.display = "none";
+        if (
+            isDropdownOpen &&
+            !shopMenu.contains(e.target) &&
+            !shopToggle.contains(e.target)
+        ) {
+            shopMenu.classList.remove("open");
             isDropdownOpen = false;
         }
     });
-});
-
-// Toggle dropdown menu on click (for mobile/touch devices)
-document.getElementById('shopToggle').addEventListener('click', function(e) {
-    e.preventDefault();
-    const menu = document.getElementById('shopMenu');
-    menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
 });
