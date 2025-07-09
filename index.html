@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +14,6 @@
         }
     </script>
 </head>
-
 <body>
     <!-- HEADER -->
     <header class="main-header">
@@ -40,7 +38,7 @@
             <a href="#contact" class="nav-item">Contact</a>
             <div class="nav-actions">
                 <img src="images/cart.png" alt="Cart" class="icon">
-                <img src="images/login.png" alt="Login" class="login-btn icon">
+                <img src="images/login.png" alt="Login" class="login-btn icon" id="loginTrigger">
             </div>
         </nav>
     </header>
@@ -56,12 +54,8 @@
                 <button type="submit">Login</button>
             </form>
             <div class="google-login">
-                <div id="g_id_onload" data-client_id="YOUR_GOOGLE_CLIENT_ID" data-context="signin" data-ux_mode="popup"
-                    data-callback="handleCredentialResponse" data-auto_prompt="false">
-                </div>
-                <div class="g_id_signin" data-type="standard" data-shape="rectangular" data-theme="outline"
-                    data-text="signin_with" data-size="large" data-logo_alignment="left">
-                </div>
+                <div id="g_id_onload" data-client_id="YOUR_GOOGLE_CLIENT_ID" data-context="signin" data-ux_mode="popup" data-callback="handleCredentialResponse" data-auto_prompt="false"></div>
+                <div class="g_id_signin" data-type="standard" data-shape="rectangular" data-theme="outline" data-text="signin_with" data-size="large" data-logo_alignment="left"></div>
             </div>
             <p class="signup-text">Don't have an account? <a href="#" id="showSignup">Sign up</a></p>
         </div>
@@ -79,12 +73,8 @@
                 <button type="submit">Sign Up</button>
             </form>
             <div class="google-login">
-                <div id="g_id_onload_signup" data-client_id="YOUR_GOOGLE_CLIENT_ID" data-context="signup"
-                    data-ux_mode="popup" data-callback="handleCredentialResponse" data-auto_prompt="false">
-                </div>
-                <div class="g_id_signin" data-type="standard" data-shape="rectangular" data-theme="outline"
-                    data-text="signup_with" data-size="large" data-logo_alignment="left">
-                </div>
+                <div id="g_id_onload_signup" data-client_id="YOUR_GOOGLE_CLIENT_ID" data-context="signup" data-ux_mode="popup" data-callback="handleCredentialResponse" data-auto_prompt="false"></div>
+                <div class="g_id_signin" data-type="standard" data-shape="rectangular" data-theme="outline" data-text="signup_with" data-size="large" data-logo_alignment="left"></div>
             </div>
             <p class="signup-text">Already have an account? <a href="#" id="showLogin">Login</a></p>
         </div>
@@ -213,8 +203,7 @@
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <div class="arrival-item">
-                            <img src="images/newarrivals/Addidas Samba OG.jpg" class="d-block w-100 arrival-image"
-                                alt="Addidas Samba OG">
+                            <img src="images/newarrivals/Addidas Samba OG.jpg" class="d-block w-100 arrival-image" alt="Addidas Samba OG">
                             <div class="arrival-info">
                                 <p class="arrival-name">Addidas Samba OG</p>
                             </div>
@@ -222,8 +211,7 @@
                     </div>
                     <div class="carousel-item">
                         <div class="arrival-item">
-                            <img src="images/newarrivals/Addidas Ultraboost 1.0.jpg" class="d-block w-100 arrival-image"
-                                alt="Addidas Ultraboost 1.0">
+                            <img src="images/newarrivals/Addidas Ultraboost 1.0.jpg" class="d-block w-100 arrival-image" alt="Addidas Ultraboost 1.0">
                             <div class="arrival-info">
                                 <p class="arrival-name">Addidas Ultraboost 1.0</p>
                             </div>
@@ -231,8 +219,7 @@
                     </div>
                     <div class="carousel-item">
                         <div class="arrival-item">
-                            <img src="images/newarrivals/Fila Black Trel.jpg" class="d-block w-100 arrival-image"
-                                alt="Fila Black Trel">
+                            <img src="images/newarrivals/Fila Black Trel.jpg" class="d-block w-100 arrival-image" alt="Fila Black Trel">
                             <div class="arrival-info">
                                 <p class="arrival-name">Fila Black Trel</p>
                             </div>
@@ -240,8 +227,7 @@
                     </div>
                     <div class="carousel-item">
                         <div class="arrival-item">
-                            <img src="images/newarrivals/MBPUMA x LAMELO BALL MB.04.jpg"
-                                class="d-block w-100 arrival-image" alt="PUMA x LAMELO BALL MB.04">
+                            <img src="images/newarrivals/MBPUMA x LAMELO BALL MB.04.jpg" class="d-block w-100 arrival-image" alt="PUMA x LAMELO BALL MB.04">
                             <div class="arrival-info">
                                 <p class="arrival-name">PUMA x LAMELO BALL MB.04</p>
                             </div>
@@ -249,8 +235,7 @@
                     </div>
                     <div class="carousel-item">
                         <div class="arrival-item">
-                            <img src="images/newarrivals/NB 574 core.jpg" class="d-block w-100 arrival-image"
-                                alt="NB 574 Core">
+                            <img src="images/newarrivals/NB 574 core.jpg" class="d-block w-100 arrival-image" alt="NB 574 Core">
                             <div class="arrival-info">
                                 <p class="arrival-name">NB 574 Core</p>
                             </div>
@@ -265,12 +250,10 @@
                         </div>
                     </div>
                 </div>
-                <button class="carousel-control-prev custom-arrival-prev" type="button"
-                    data-bs-target="#newArrivalsCarousel" data-bs-slide="prev">
+                <button class="carousel-control-prev custom-arrival-prev" type="button" data-bs-target="#newArrivalsCarousel" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon"></span>
                 </button>
-                <button class="carousel-control-next custom-arrival-next" type="button"
-                    data-bs-target="#newArrivalsCarousel" data-bs-slide="next">
+                <button class="carousel-control-next custom-arrival-next" type="button" data-bs-target="#newArrivalsCarousel" data-bs-slide="next">
                     <span class="carousel-control-next-icon"></span>
                 </button>
             </div>
@@ -299,8 +282,7 @@
                 <input type="email" class="newsletter-input" placeholder="Enter your email" required>
                 <button type="submit" class="newsletter-button">Subscribe</button>
             </form>
-            <p class="newsletter-privacy">You will be able to unsubscribe at any time. <a href="#">Read our Privacy
-                    Policy here</a>.</p>
+            <p class="newsletter-privacy">You will be able to unsubscribe at any time. <a href="#">Read our Privacy Policy here</a>.</p>
         </div>
     </section>
 
@@ -344,5 +326,4 @@
     <script src="js/navbar.js"></script>
     <script src="js/login.js"></script>
 </body>
-
 </html>

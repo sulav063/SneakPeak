@@ -1,27 +1,18 @@
 document.addEventListener("DOMContentLoaded", function () {
     const loginPopup = document.getElementById("loginPopup");
     const signupPopup = document.getElementById("signupPopup");
-    const loginIcon = document.querySelector(".login-icon");
+    const loginTrigger = document.getElementById("loginTrigger");
     const showSignup = document.getElementById("showSignup");
     const showLogin = document.getElementById("showLogin");
     const closePopups = document.querySelectorAll(".close-popup");
 
-    // Debug logs to check element availability
-    console.log("loginPopup:", loginPopup);
-    console.log("loginIcon:", loginIcon);
-
     // Show login popup when login icon is clicked
-    if (loginIcon) {
-        loginIcon.addEventListener("click", () => {
-            console.log("Login icon clicked");
+    if (loginTrigger) {
+        loginTrigger.addEventListener("click", () => {
             if (loginPopup) {
                 loginPopup.classList.add("active");
-            } else {
-                console.error("loginPopup not found");
             }
         });
-    } else {
-        console.error("loginIcon not found");
     }
 
     // Switch to signup popup
@@ -58,9 +49,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Close popups when clicking outside
     document.addEventListener("click", (e) => {
-        if (loginPopup && !loginPopup.contains(e.target) && !loginIcon.contains(e.target) && loginPopup.classList.contains("active")) {
+        if (loginPopup && !loginPopup.contains(e.target) && !loginTrigger.contains(e.target) && loginPopup.classList.contains("active")) {
             loginPopup.classList.remove("active");
-        } else if (signupPopup && !signupPopup.contains(e.target) && !loginIcon.contains(e.target) && signupPopup.classList.contains("active")) {
+        } else if (signupPopup && !signupPopup.contains(e.target) && !loginTrigger.contains(e.target) && signupPopup.classList.contains("active")) {
             signupPopup.classList.remove("active");
         }
     });

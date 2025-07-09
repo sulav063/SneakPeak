@@ -11,11 +11,13 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f9f9f9;
-    overflow-x: hidden; /* Prevent horizontal overflow from child elements */
+    overflow-x: hidden;
+    /* Prevent horizontal overflow from child elements */
 }
 
 body.contact-active {
-    padding-bottom: 100px; /* Apply only when needed, adjust for small screens */
+    padding-bottom: 100px;
+    /* Apply only when needed, adjust for small screens */
 }
 
 /* Header */
@@ -74,7 +76,7 @@ body.contact-active {
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 40px;
 }
 
 .nav-links .search-box {
@@ -119,9 +121,9 @@ body.contact-active {
     display: none;
     position: absolute;
     background-color: #222;
-    top: 60%; /* Aligns directly below the Shop link */
-    left: 70%; /* Centers the dropdown horizontally */
-    transform: translateX(-50%); /* Shifts it back by half its width to center under Shop */
+    top: 60%;
+    left: 70%;
+    transform: translateX(-50%);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     border-radius: 6px;
     z-index: 10;
@@ -154,20 +156,26 @@ body.contact-active {
 }
 
 .icon {
-    width: 28px; /* Increased size for attractiveness */
+    width: 28px;
+    /* Increased size for attractiveness */
     height: 28px;
     cursor: pointer;
     filter: brightness(0) invert(1);
     transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-    border-radius: 50%; /* Circular shape for modern look */
+    border-radius: 50%;
+    /* Circular shape for modern look */
     padding: 5px;
-    background-color: rgba(255, 255, 255, 0.1); /* Subtle background */
+    background-color: rgba(255, 255, 255, 0.1);
+    /* Subtle background */
 }
 
 .icon:hover {
-    transform: scale(1.2); /* Larger hover effect */
-    background-color: rgba(255, 255, 255, 0.2); /* Lighter background on hover */
-    box-shadow: 0 0 8px rgba(58, 134, 255, 0.5); /* Glow effect */
+    transform: scale(1.2);
+    /* Larger hover effect */
+    background-color: rgba(255, 255, 255, 0.2);
+    /* Lighter background on hover */
+    box-shadow: 0 0 8px rgba(58, 134, 255, 0.5);
+    /* Glow effect */
 }
 
 /* Move to Top Button */
@@ -209,7 +217,8 @@ body.contact-active {
     background-color: rgba(0, 0, 0, 0.6);
     justify-content: center;
     align-items: center;
-    z-index: 10000; /* Increased to ensure it’s above other elements */
+    z-index: 10000;
+    /* Increased to ensure it’s above other elements */
 }
 
 .login-popup.active {
@@ -291,7 +300,8 @@ form button:hover {
     max-height: 600px;
     overflow: visible;
     position: relative;
-    margin-top: 80px; /* Offset for fixed header */
+    margin-top: 80px;
+    /* Offset for fixed header */
 }
 
 .carousel-image {
@@ -356,7 +366,8 @@ form button:hover {
 
 /* Brands Section */
 .brands-section {
-    padding: 20px 10px; /* Reduced padding for more width */
+    padding: 20px 10px;
+    /* Reduced padding for more width */
     text-align: center;
     width: 100%;
     overflow-x: hidden;
@@ -371,24 +382,32 @@ form button:hover {
 .brands-list {
     display: flex;
     justify-content: flex-start;
-    gap: 8px; /* Reduced gap for tighter layout */
-    flex-wrap: nowrap; /* Prevent wrapping */
-    overflow-x: auto; /* Enable horizontal scrolling */
+    gap: 8px;
+    /* Reduced gap for tighter layout */
+    flex-wrap: nowrap;
+    /* Prevent wrapping */
+    overflow-x: auto;
+    /* Enable horizontal scrolling */
     padding-bottom: 10px;
     width: 100%;
     min-width: 0;
-    white-space: nowrap; /* Prevent text wrapping */
+    white-space: nowrap;
+    /* Prevent text wrapping */
 }
 
 .brand-image {
-    width: 60px; /* Reduced width to fit smaller screens */
-    height: 40px; /* Reduced height to match */
+    width: 120px;
+    /* Reduced width to fit smaller screens */
+    height: 100px;
+    /* Reduced height to match */
     object-fit: contain;
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-radius: 6px;
-    flex-shrink: 0; /* Prevent shrinking */
-    min-width: 0; /* Ensure no unexpected wrapping */
+    flex-shrink: 0;
+    /* Prevent shrinking */
+    min-width: 0;
+    /* Ensure no unexpected wrapping */
 }
 
 .brand-image:hover {
@@ -686,7 +705,8 @@ form button:hover {
 .footer {
     background-color: #111;
     color: #fff;
-    padding: 15px 10px; /* Reduced padding for smaller screens */
+    padding: 15px 10px;
+    /* Reduced padding for smaller screens */
     position: relative;
     width: 100%;
     margin-top: auto;
@@ -694,7 +714,8 @@ form button:hover {
 
 .footer-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjusted min width for better stacking */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    /* Adjusted min width for better stacking */
     gap: 15px;
     max-width: 1200px;
     margin: 0 auto;
@@ -710,12 +731,14 @@ form button:hover {
 }
 
 .footer-logo {
-    height: 40px; /* Reduced for smaller screens */
+    height: 40px;
+    /* Reduced for smaller screens */
     margin-bottom: 5px;
 }
 
 .footer-column h4 {
-    font-size: 16px; /* Reduced base font size */
+    font-size: 16px;
+    /* Reduced base font size */
     font-weight: 600;
     margin-bottom: 8px;
 }
@@ -733,7 +756,8 @@ form button:hover {
 .footer-column ul li a {
     color: #ccc;
     text-decoration: none;
-    font-size: 13px; /* Adjusted for readability */
+    font-size: 13px;
+    /* Adjusted for readability */
 }
 
 .footer-column ul li a:hover {
@@ -744,13 +768,15 @@ form button:hover {
 .payment-image {
     margin-top: 5px;
     max-width: 100%;
-    width: 150px; /* Reduced width for smaller screens */
+    width: 150px;
+    /* Reduced width for smaller screens */
 }
 
 .footer-bottom {
     text-align: center;
     padding: 8px 0;
-    font-size: 12px; /* Reduced for smaller screens */
+    font-size: 12px;
+    /* Reduced for smaller screens */
     color: #aaa;
 }
 
@@ -784,6 +810,7 @@ form button:hover {
 
 /* Responsive Design */
 @media (max-width: 1024px) {
+
     .custom-arrival-prev,
     .custom-arrival-next {
         display: none;
@@ -888,7 +915,8 @@ form button:hover {
         display: none;
         flex-direction: column;
         align-items: center;
-        gap: 20px; /* Increased gap for more space between cart and login */
+        gap: 40px;
+        /* Increased gap for more space between cart and login */
         width: 100%;
         margin: 10px 0;
     }
@@ -929,7 +957,8 @@ form button:hover {
     }
 
     .footer-container {
-        grid-template-columns: 1fr; /* Stack columns on tablets */
+        grid-template-columns: 1fr;
+        /* Stack columns on tablets */
         gap: 10px;
     }
 
@@ -1031,7 +1060,9 @@ form button:hover {
     }
 }
 
-@media (max-width: 375px) { /* Targeting iPhone SE, similar to Pixel 7 and Galaxy A51/A71 */
+@media (max-width: 375px) {
+
+    /* Targeting iPhone SE, similar to Pixel 7 and Galaxy A51/A71 */
     .brands-section {
         padding: 10px 5px;
     }
@@ -1074,7 +1105,9 @@ form button:hover {
     }
 }
 
-@media (max-width: 360px) { /* Targeting Galaxy S8+ */
+@media (max-width: 360px) {
+
+    /* Targeting Galaxy S8+ */
     .brands-section {
         padding: 10px 5px;
     }
@@ -1117,7 +1150,9 @@ form button:hover {
     }
 }
 
-@media (max-width: 412px) { /* Targeting S20 Ultra */
+@media (max-width: 412px) {
+
+    /* Targeting S20 Ultra */
     .brands-section {
         padding: 10px 5px;
     }
@@ -1160,7 +1195,9 @@ form button:hover {
     }
 }
 
-@media (max-width: 181px) { /* Targeting Galaxy Z Fold 5 (folded state) */
+@media (max-width: 181px) {
+
+    /* Targeting Galaxy Z Fold 5 (folded state) */
     .brands-section {
         padding: 5px;
     }
