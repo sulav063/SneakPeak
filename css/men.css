@@ -9,8 +9,7 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 100px;
-    /* Offset for fixed header */
+    scroll-padding-top: 100px; /* Offset for fixed header */
 }
 
 /* Import font */
@@ -21,10 +20,11 @@ body {
     background-color: #f9f9f9;
     color: #333;
     line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal overflow */
 }
 
 body.contact-active {
-    padding-bottom: 100px;
+    padding-bottom: 100px; /* Apply padding for contact section */
 }
 
 /* Header */
@@ -32,7 +32,7 @@ body.contact-active {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 40px;
+    padding: 15px 20px;
     background-color: #111;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     position: fixed;
@@ -50,7 +50,6 @@ body.contact-active {
     display: flex;
     align-items: center;
     gap: 10px;
-    z-index: 1200;
 }
 
 .logo-title a {
@@ -84,7 +83,22 @@ body.contact-active {
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 40px;
+}
+
+.nav-links .search-box {
+    padding: 8px 12px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    width: 150px;
+    font-size: 14px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nav-links .search-box:focus {
+    border-color: #3a86ff;
+    box-shadow: 0 0 5px rgba(58, 134, 255, 0.5);
+    outline: none;
 }
 
 .nav-item {
@@ -101,6 +115,12 @@ body.contact-active {
     transform: translateY(-2px);
 }
 
+.nav-item:active {
+    transform: scale(1.1);
+    color: #ff6b6b;
+    transition: transform 0.1s ease, color 0.1s ease;
+}
+
 .dropdown {
     position: relative;
 }
@@ -109,8 +129,9 @@ body.contact-active {
     display: none;
     position: absolute;
     background-color: #222;
-    top: 30px;
-    left: 0;
+    top: 60%;
+    left: 70%;
+    transform: translateX(-50%);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     border-radius: 6px;
     z-index: 10;
@@ -138,47 +159,25 @@ body.contact-active {
 
 .nav-actions {
     display: flex;
-    gap: 20px;
+    gap: 15px;
     align-items: center;
 }
 
-.search-box {
-    padding: 8px 14px;
-    border-radius: 20px;
-    border: 1px solid #ccc;
-    width: 180px;
-    font-size: 14px;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.search-box:focus {
-    border-color: #3a86ff;
-    box-shadow: 0 0 5px rgba(58, 134, 255, 0.5);
-    outline: none;
-}
-
 .icon {
-    width: 24px;
-    height: 24px;
+    width: 28px;
+    height: 28px;
     cursor: pointer;
     filter: brightness(0) invert(1);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 50%;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .icon:hover {
-    transform: scale(1.1);
-}
-
-.login-btn {
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
-    filter: brightness(0) invert(1);
-    transition: transform 0.3s ease;
-}
-
-.login-btn:hover {
-    transform: scale(1.1);
+    transform: scale(1.2);
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 8px rgba(58, 134, 255, 0.5);
 }
 
 /* Mobile Nav Button */
@@ -189,15 +188,24 @@ body.contact-active {
     font-size: 28px;
     color: white;
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 15px;
+    right: 15px;
     z-index: 1200;
     cursor: pointer;
     transition: transform 0.3s ease;
+    padding: 6px 10px;
+    background-color: #333;
+    border-radius: 4px;
+    border: 1px solid #444;
 }
 
 .menu-toggle:hover {
     transform: scale(1.1);
+    background-color: #444;
+}
+
+.menu-toggle.show {
+    background-color: #555;
 }
 
 /* Login/Signup Popup Styles */
@@ -211,21 +219,21 @@ body.contact-active {
     background-color: rgba(0, 0, 0, 0.6);
     justify-content: center;
     align-items: center;
-    z-index: 9999;
+    z-index: 10000;
 }
 
 .login-popup.active {
-    display: flex;
-    opacity: 1;
-    pointer-events: auto;
+    display: flex !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
 }
 
 .popup-content {
     background: white;
-    padding: 30px 40px;
+    padding: 20px 30px;
     border-radius: 12px;
-    max-width: 400px;
-    width: 90%;
+    max-width: 350px;
+    width: 100%;
     position: relative;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
@@ -240,8 +248,8 @@ body.contact-active {
 
 .close-popup {
     position: absolute;
-    top: 18px;
-    right: 22px;
+    top: 15px;
+    right: 20px;
     background: transparent;
     border: none;
     font-size: 24px;
@@ -257,8 +265,8 @@ body.contact-active {
 .login-popup form input,
 .login-popup form textarea {
     width: 100%;
-    padding: 12px 14px;
-    margin-bottom: 18px;
+    padding: 10px 12px;
+    margin-bottom: 15px;
     border: 1.5px solid #ddd;
     border-radius: 8px;
     font-size: 14px;
@@ -266,7 +274,7 @@ body.contact-active {
 
 .login-popup form button {
     width: 100%;
-    padding: 12px 14px;
+    padding: 10px 12px;
     background-color: #333;
     color: white;
     border: none;
@@ -280,8 +288,13 @@ body.contact-active {
     background-color: #111;
 }
 
+.google-login {
+    margin: 15px 0;
+    text-align: center;
+}
+
 .signup-text {
-    margin-top: 12px;
+    margin-top: 10px;
     font-size: 14px;
     text-align: center;
 }
@@ -298,8 +311,7 @@ body.contact-active {
 
 /* Main Content Styles */
 main.container {
-    margin-top: 120px;
-    /* Offset for fixed header */
+    margin-top: 120px; /* Offset for fixed header */
     padding: 2rem 15px;
 }
 
@@ -377,19 +389,21 @@ h2.mb-4 {
 .footer {
     background-color: #111;
     color: #fff;
-    padding: 60px 20px 40px;
+    padding: 15px 10px;
     position: relative;
+    width: 100%;
+    margin-top: auto;
 }
 
 .footer-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
     max-width: 1200px;
     margin: 0 auto;
-    padding-bottom: 40px;
+    padding-bottom: 10px;
     border-bottom: 1px solid #333;
-    align-items: start;
+    align-items: flex-start;
 }
 
 .footer-column {
@@ -399,14 +413,14 @@ h2.mb-4 {
 }
 
 .footer-logo {
-    height: 50px;
-    margin-bottom: 10px;
+    height: 40px;
+    margin-bottom: 5px;
 }
 
 .footer-column h4 {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
 }
 
 .footer-column ul {
@@ -416,12 +430,13 @@ h2.mb-4 {
 }
 
 .footer-column ul li {
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
 
 .footer-column ul li a {
     color: #ccc;
     text-decoration: none;
+    font-size: 13px;
 }
 
 .footer-column ul li a:hover {
@@ -430,15 +445,15 @@ h2.mb-4 {
 }
 
 .payment-image {
-    margin-top: 10px;
+    margin-top: 5px;
     max-width: 100%;
-    width: 200px;
+    width: 150px;
 }
 
 .footer-bottom {
     text-align: center;
-    padding: 20px 10px;
-    font-size: 13px;
+    padding: 8px 0;
+    font-size: 12px;
     color: #aaa;
 }
 
@@ -472,28 +487,25 @@ h2.mb-4 {
 
 /* Responsive Design */
 @media (max-width: 1024px) {
-
     .custom-arrival-prev,
     .custom-arrival-next {
         display: none;
     }
 
-    .brands-list {
-        justify-content: center;
-        gap: 20px;
-    }
-
-    .categories-title,
-    .brands-title {
-        font-size: 20px;
-    }
-
-    .carousel-image {
-        height: 450px;
-    }
-
     .footer-container {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-column h4 {
+        font-size: 15px;
+    }
+
+    .footer-column ul li a {
+        font-size: 12px;
+    }
+
+    .footer-bottom {
+        font-size: 11px;
     }
 }
 
@@ -501,7 +513,7 @@ h2.mb-4 {
     .main-header {
         flex-wrap: wrap;
         gap: 10px;
-        padding: 10px 20px;
+        padding: 10px;
         position: fixed;
         top: 0;
         width: 100%;
@@ -510,20 +522,20 @@ h2.mb-4 {
     .menu-toggle {
         display: block;
         position: absolute;
-        top: 15px;
-        right: 20px;
+        top: 10px;
+        right: 10px;
     }
 
     .nav-links {
         position: fixed;
-        top: 80px;
+        top: 60px;
         right: -100%;
         flex-direction: column;
         align-items: center;
-        width: 250px;
+        width: 200px;
         height: 100vh;
         background-color: #111;
-        padding: 20px;
+        padding: 10px;
         transition: right 0.3s ease-in-out;
         box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
         z-index: 1100;
@@ -533,8 +545,13 @@ h2.mb-4 {
         right: 0;
     }
 
+    .nav-links .search-box {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+
     .nav-item {
-        padding: 15px 10px;
+        padding: 8px;
         width: 100%;
         text-align: center;
         border-bottom: 1px solid #222;
@@ -547,31 +564,26 @@ h2.mb-4 {
         box-shadow: none;
         width: 100%;
         padding: 0;
+        margin-top: 5px;
+        transform: none;
     }
 
     .dropdown-content a {
-        padding: 10px 20px;
+        padding: 8px 15px;
         text-align: center;
     }
 
     .nav-actions {
         display: none;
-        /* Hide by default on small screens */
         flex-direction: column;
         align-items: center;
-        gap: 15px;
+        gap: 40px;
         width: 100%;
-        margin: 20px 0;
+        margin: 10px 0;
     }
 
-    .nav-actions.show {
+    .nav-links.show .nav-actions {
         display: flex;
-        /* Show when menu is open */
-    }
-
-    .search-box {
-        width: 100%;
-        margin-top: 0;
     }
 
     .carousel-image {
@@ -579,121 +591,48 @@ h2.mb-4 {
     }
 
     .brand-image {
-        width: 85px;
-        height: 60px;
-    }
-
-    .limited-offer-title {
-        font-size: 1.5rem;
-    }
-
-    .limited-offer-subtitle {
-        font-size: 1rem;
-    }
-
-    .newsletter-title {
-        font-size: 20px;
-    }
-
-    .newsletter-input {
-        min-width: 180px;
+        width: 60px;
+        height: 40px;
     }
 
     .footer-container {
         grid-template-columns: 1fr;
-        gap: 30px;
-    }
-
-    .popup-content {
-        padding: 20px;
+        gap: 10px;
     }
 
     .footer-column h4 {
-        font-size: 16px;
+        font-size: 14px;
     }
 
-    .newsletter-section {
-        padding: 30px 15px;
+    .footer-column ul li a {
+        font-size: 12px;
     }
 
-    /* New Arrivals: One shoe per slide on small screens */
-    #newArrivalsCarousel .carousel-item .arrival-item {
-        display: block;
-        text-align: center;
-        max-width: 300px;
-        margin: 0 auto;
+    .footer-bottom {
+        font-size: 11px;
     }
 
-    #newArrivalsCarousel .carousel-item .row {
-        display: none;
-        /* Remove column layout */
+    .popup-content {
+        padding: 15px;
     }
 
-    /* Limited Offer Banner: Stack text below image on small screens */
-    .limited-offer-banner {
-        flex-direction: column;
-        height: auto;
-        margin: 20px auto;
-        max-height: none;
+    .footer-column .footer-logo {
+        height: 35px;
     }
 
-    .limited-offer-banner .offer-image {
-        height: 250px;
-        width: 100%;
-        flex: none;
+    .payment-image {
+        width: 120px;
     }
 
-    .limited-offer-text {
-        flex: none;
-        width: 100%;
-        padding: 1.5rem 1rem;
-        text-align: center;
-        align-items: center;
-    }
-
-    .limited-offer-title {
-        font-size: 1.2rem;
-        margin: 0 0 0.5rem 0;
-    }
-
-    .limited-offer-subtitle {
-        font-size: 0.9rem;
-        margin: 0 0 1rem 0;
-        max-width: 100%;
-    }
-
-    .grab-btn {
-        padding: 0.5rem 1.5rem;
-        font-size: 0.9rem;
-    }
-
-    /* Add white space between navbar and footer when at #contact on small screens */
     body.contact-active .footer {
         padding-top: 80px;
-        /* Add white space */
     }
 }
 
 @media (max-width: 480px) {
     .brand-image {
-        width: 65px;
-        height: 50px;
-    }
-
-    .limited-offer-title {
-        font-size: 1rem;
-    }
-
-    .limited-offer-subtitle {
-        font-size: 0.8rem;
-    }
-
-    .newsletter-title {
-        font-size: 18px;
-    }
-
-    .newsletter-input {
-        min-width: 150px;
+        width: 50px;
+        height: 35px;
     }
 
     .carousel-image {
@@ -706,10 +645,177 @@ h2.mb-4 {
 
     .nav-actions {
         margin-left: 0;
-        /* Reset margin for consistency */
     }
 
     .search-box {
         width: 100%;
+    }
+
+    .footer {
+        padding: 10px 5px;
+    }
+
+    .footer-container {
+        gap: 8px;
+    }
+
+    .footer-column h4 {
+        font-size: 13px;
+    }
+
+    .footer-column ul li a {
+        font-size: 11px;
+    }
+
+    .footer-bottom {
+        font-size: 10px;
+    }
+
+    .footer-column .footer-logo {
+        height: 30px;
+    }
+
+    .payment-image {
+        width: 100px;
+    }
+}
+
+@media (max-width: 375px) {
+    .brand-image {
+        width: 45px;
+        height: 30px;
+    }
+
+    .footer {
+        padding: 8px 5px;
+    }
+
+    .footer-container {
+        gap: 6px;
+    }
+
+    .footer-column h4 {
+        font-size: 12px;
+    }
+
+    .footer-column ul li a {
+        font-size: 10px;
+    }
+
+    .footer-bottom {
+        font-size: 9px;
+    }
+
+    .footer-column .footer-logo {
+        height: 25px;
+    }
+
+    .payment-image {
+        width: 90px;
+    }
+}
+
+@media (max-width: 360px) {
+    .brand-image {
+        width: 45px;
+        height: 30px;
+    }
+
+    .footer {
+        padding: 8px 5px;
+    }
+
+    .footer-container {
+        gap: 6px;
+    }
+
+    .footer-column h4 {
+        font-size: 12px;
+    }
+
+    .footer-column ul li a {
+        font-size: 10px;
+    }
+
+    .footer-bottom {
+        font-size: 9px;
+    }
+
+    .footer-column .footer-logo {
+        height: 25px;
+    }
+
+    .payment-image {
+        width: 90px;
+    }
+}
+
+@media (max-width: 412px) {
+    .brand-image {
+        width: 45px;
+        height: 30px;
+    }
+
+    .footer {
+        padding: 8px 5px;
+    }
+
+    .footer-container {
+        gap: 6px;
+    }
+
+    .footer-column h4 {
+        font-size: 12px;
+    }
+
+    .footer-column ul li a {
+        font-size: 10px;
+    }
+
+    .footer-bottom {
+        font-size: 9px;
+    }
+
+    .footer-column .footer-logo {
+        height: 25px;
+    }
+
+    .payment-image {
+        width: 90px;
+    }
+}
+
+@media (max-width: 181px) {
+    .brand-image {
+        width: 40px;
+        height: 25px;
+    }
+
+    .footer {
+        padding: 5px;
+    }
+
+    .footer-container {
+        gap: 4px;
+    }
+
+    .footer-column h4 {
+        font-size: 10px;
+    }
+
+    .footer-column ul li a {
+        font-size: 9px;
+    }
+
+    .footer-bottom {
+        font-size: 8px;
+    }
+
+    .footer-column .footer-logo {
+        height: 20px;
+    }
+
+    .payment-image {
+        width: 80px;
     }
 }

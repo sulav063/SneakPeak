@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,78 +10,68 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- Google Identity Services -->
     <script src="https://accounts.google.com/gsi/client?hl=en" async defer></script>
+    <script src="https://accounts.google.com/gsi/client?hl=en" async defer></script>
     <script>
         function handleCredentialResponse(response) {
             console.log("Google login token:", response.credential);
-            // TODO: Send token to backend to validate and login user
         }
-
-        window.onload = function () {
-            google.accounts.id.initialize({
-                client_id: "YOUR_GOOGLE_CLIENT_ID", // Replace with your actual client ID
-                callback: handleCredentialResponse
-            });
-
-            // Render buttons inside login popup
-            google.accounts.id.renderButton(
-                document.getElementById("googleSignInLogin"),
-                { theme: "outline", size: "large", width: 280 }
-            );
-
-            // Render buttons inside signup popup
-            google.accounts.id.renderButton(
-                document.getElementById("googleSignInSignup"),
-                { theme: "outline", size: "large", width: 280 }
-            );
-        };
     </script>
 </head>
+
 <body>
     <header class="main-header">
         <div class="logo-title">
             <a href="index.html">
-                <img src="images/sneakpeak.png" alt="SneakPeak Logo" class="header-logo">
-                SneakPeak
+                <img src="images/sneakpeak.png" class="header-logo" alt="SneakPeak Logo">
+                <span class="brand-name">SneakPeak</span>
             </a>
         </div>
         <button id="menuToggle" class="menu-toggle">☰</button>
-        <nav class="nav-links" id="navbarMenu">
-            <a href="#" class="nav-item dropdown">Shop ▾
+        <div class="nav-links" id="navbarMenu">
+            <input type="text" class="search-box" placeholder="Search...">
+            <a href="index.html" class="nav-item">Home</a>
+            <div class="dropdown">
+                <a class="nav-item">Shop ▾</a>
                 <div class="dropdown-content">
                     <a href="men.html">Men</a>
                     <a href="women.html">Women</a>
                     <a href="kids.html">Kids</a>
                 </div>
-            </a>
+            </div>
             <a href="index.html#brands" class="nav-item">Brands</a>
             <a href="index.html#new-arrivals" class="nav-item">New Arrivals</a>
             <a href="#contact" class="nav-item">Contact</a>
-        </nav>
-        <div class="nav-actions">
-            <input type="text" class="search-box" placeholder="Search...">
-            <img src="images/cart.png" alt="Cart" class="icon">
-            <img src="images/login.png" alt="Login" class="login-btn login-icon">
+            <div class="nav-actions">
+                <img src="images/cart.png" class="icon cart-btn" alt="Cart">
+                <img src="images/login.png" class="icon login-btn" alt="Login" id="showLogin">
+            </div>
         </div>
     </header>
 
+    <!-- LOGIN POPUP -->
     <div id="loginPopup" class="login-popup">
         <div class="popup-content">
-            <button class="close-popup">×</button>
+            <span class="close-popup">×</span>
             <h3>Welcome Back!</h3>
             <form>
                 <input type="email" placeholder="Email" required>
                 <input type="password" placeholder="Password" required>
                 <button type="submit">Login</button>
             </form>
-            <!-- Google Sign-In button container for login -->
-            <div id="googleSignInLogin" style="margin-top: 15px; display: flex; justify-content: center;"></div>
+            <div class="google-login">
+                <div id="g_id_onload" data-client_id="YOUR_GOOGLE_CLIENT_ID" data-context="signin" data-ux_mode="popup"
+                    data-callback="handleCredentialResponse" data-auto_prompt="false"></div>
+                <div class="g_id_signin" data-type="standard" data-shape="rectangular" data-theme="outline"
+                    data-text="signin_with" data-size="large" data-logo_alignment="left"></div>
+            </div>
             <p class="signup-text">Don't have an account? <a href="#" id="showSignup">Sign up</a></p>
         </div>
     </div>
 
+    <!-- SIGNUP POPUP -->
     <div id="signupPopup" class="login-popup">
         <div class="popup-content">
-            <button class="close-popup">×</button>
+            <span class="close-popup">×</span>
             <h3>Create an Account</h3>
             <form>
                 <input type="text" placeholder="Full Name" required>
@@ -88,18 +79,22 @@
                 <input type="password" placeholder="Password" required>
                 <button type="submit">Sign Up</button>
             </form>
-            <!-- Google Sign-In button container for signup -->
-            <div id="googleSignInSignup" style="margin-top: 15px; display: flex; justify-content: center;"></div>
+            <div class="google-login">
+                <div id="g_id_onload_signup" data-client_id="YOUR_GOOGLE_CLIENT_ID" data-context="signup"
+                    data-ux_mode="popup" data-callback="handleCredentialResponse" data-auto_prompt="false"></div>
+                <div class="g_id_signin" data-type="standard" data-shape="rectangular" data-theme="outline"
+                    data-text="signup_with" data-size="large" data-logo_alignment="left"></div>
+            </div>
             <p class="signup-text">Already have an account? <a href="#" id="showLogin">Login</a></p>
         </div>
     </div>
 
-    <main class="container my-5">
+    <main class="container main-margin">
         <h2 class="mb-4">Women’s Shoes</h2>
         <div class="row gx-3 gy-4">
             <div class="col-md-4 text-center shoe-item">
                 <a href="product.html?id=women1">
-                    <img src="images/women/Addidas Samba OG.jpg" alt="Addidas Samba OG" class="arrival-image">
+                    <img src="images/women/Addidas Samba OG.jpg" class="arrival-image" alt="Addidas Samba OG">
                     <div class="arrival-info">
                         <p class="arrival-name">Addidas Samba OG</p>
                         <p class="arrival-price">Rs. 3700</p>
@@ -108,7 +103,8 @@
             </div>
             <div class="col-md-4 text-center shoe-item">
                 <a href="product.html?id=women2">
-                    <img src="images/women/Adilette Comfort Slides.jpg" alt="Adilette Comfort Slides" class="arrival-image">
+                    <img src="images/women/Adilette Comfort Slides.jpg" class="arrival-image"
+                        alt="Adilette Comfort Slides">
                     <div class="arrival-info">
                         <p class="arrival-name">Adilette Comfort Slides</p>
                         <p class="arrival-price">Rs. 2100</p>
@@ -117,7 +113,7 @@
             </div>
             <div class="col-md-4 text-center shoe-item">
                 <a href="product.html?id=women3">
-                    <img src="images/women/NB 9060.jpg" alt="NB 9060" class="arrival-image">
+                    <img src="images/women/NB 9060.jpg" class="arrival-image" alt="NB 9060">
                     <div class="arrival-info">
                         <p class="arrival-name">NB 9060</p>
                         <p class="arrival-price">Rs. 3900</p>
@@ -126,7 +122,7 @@
             </div>
             <div class="col-md-4 text-center shoe-item">
                 <a href="product.html?id=women4">
-                    <img src="images/women/Nike Air Max Moto 2K.jpg" alt="Nike Air Max Moto 2K" class="arrival-image">
+                    <img src="images/women/Nike Air Max Moto 2K.jpg" class="arrival-image" alt="Nike Air Max Moto 2K">
                     <div class="arrival-info">
                         <p class="arrival-name">Nike Air Max Moto 2K</p>
                         <p class="arrival-price">Rs. 4000</p>
@@ -135,7 +131,8 @@
             </div>
             <div class="col-md-4 text-center shoe-item">
                 <a href="product.html?id=women5">
-                    <img src="images/women/Scuderia Ferrari Speedcat.jpg" alt="Scuderia Ferrari Speedcat" class="arrival-image">
+                    <img src="images/women/Scuderia Ferrari Speedcat.jpg" class="arrival-image"
+                        alt="Scuderia Ferrari Speedcat">
                     <div class="arrival-info">
                         <p class="arrival-name">Scuderia Ferrari Speedcat</p>
                         <p class="arrival-price">Rs. 4100</p>
@@ -144,7 +141,7 @@
             </div>
             <div class="col-md-4 text-center shoe-item">
                 <a href="product.html?id=women6">
-                    <img src="images/women/Speedcat Wine Club.jpg" alt="Speedcat Wine Club" class="arrival-image">
+                    <img src="images/women/Speedcat Wine Club.jpg" class="arrival-image" alt="Speedcat Wine Club">
                     <div class="arrival-info">
                         <p class="arrival-name">Speedcat Wine Club</p>
                         <p class="arrival-price">Rs. 4200</p>
@@ -154,7 +151,8 @@
         </div>
     </main>
 
-   <footer class="footer" id="contact">
+    <!-- FOOTER -->
+    <footer class="footer" id="contact">
         <div class="footer-container">
             <div class="footer-column">
                 <img src="images/sneakpeak.png" alt="Logo" class="footer-logo">
@@ -166,14 +164,6 @@
                 <p>Email: <a href="mailto:support@sneakpeak.com">support@sneakpeak.com</a></p>
                 <p>Phone: +977 9801872365</p>
                 <p>Address: Kathmandu</p>
-                <form class="footer-contact-form">
-                    <input type="email" placeholder="Your Email" required
-                        style="width: 100%; padding: 8px; margin: 6px 0; border-radius: 4px; border: 1px solid #ccc;">
-                    <textarea placeholder="Your Message" rows="3" required
-                        style="width: 100%; padding: 8px; margin: 6px 0; border-radius: 4px; border: 1px solid #ccc;"></textarea>
-                    <button type="submit"
-                        style="background: #444; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer;">Send</button>
-                </form>
             </div>
             <div class="footer-column">
                 <h4>Support</h4>
@@ -194,9 +184,12 @@
         </div>
     </footer>
 
-    <button id="moveToTop" class="move-to-top">↑</button>
+    <!-- MOVE TO TOP BUTTON -->
+    <button class="move-to-top" id="moveToTop" aria-label="Move to Top">↑</button>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="navbar.js"></script>
-    <script src="login.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/login.js"></script>
 </body>
+
 </html>
