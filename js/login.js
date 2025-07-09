@@ -1,62 +1,67 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
     const loginPopup = document.getElementById("loginPopup");
     const signupPopup = document.getElementById("signupPopup");
-
     const loginIcon = document.querySelector(".login-icon");
+    const showSignup = document.getElementById("showSignup");
+    const showLogin = document.getElementById("showLogin");
+    const closePopups = document.querySelectorAll(".close-popup");
 
-    const showSignupBtn = document.getElementById("showSignup");
-    const showLoginBtn = document.getElementById("showLogin");
+    // Debug logs to check element availability
+    console.log("loginPopup:", loginPopup);
+    console.log("loginIcon:", loginIcon);
 
-    const closeButtons = document.querySelectorAll(".close-popup");
-
-    // Show login popup
-    loginIcon?.addEventListener("click", () => {
-        showPopup(loginPopup);
-        hidePopup(signupPopup);
-    });
+    // Show login popup when login icon is clicked
+    if (loginIcon) {
+        loginIcon.addEventListener("click", () => {
+            console.log("Login icon clicked");
+            if (loginPopup) {
+                loginPopup.classList.add("active");
+            } else {
+                console.error("loginPopup not found");
+            }
+        });
+    } else {
+        console.error("loginIcon not found");
+    }
 
     // Switch to signup popup
-    showSignupBtn?.addEventListener("click", (e) => {
-        e.preventDefault();
-        hidePopup(loginPopup);
-        showPopup(signupPopup);
-    });
-
-    // Switch back to login popup
-    showLoginBtn?.addEventListener("click", (e) => {
-        e.preventDefault();
-        hidePopup(signupPopup);
-        showPopup(loginPopup);
-    });
-
-    // Close buttons in either popup
-    closeButtons.forEach((btn) => {
-        btn.addEventListener("click", () => {
-            hidePopup(loginPopup);
-            hidePopup(signupPopup);
+    if (showSignup) {
+        showSignup.addEventListener("click", (e) => {
+            e.preventDefault();
+            if (loginPopup && signupPopup) {
+                loginPopup.classList.remove("active");
+                signupPopup.classList.add("active");
+            }
         });
-    });
+    }
 
-    // Close popups when clicking outside content
-    [loginPopup, signupPopup].forEach((popup) => {
-        popup?.addEventListener("click", (e) => {
-            if (e.target === popup) {
-                hidePopup(popup);
+    // Switch to login popup
+    if (showLogin) {
+        showLogin.addEventListener("click", (e) => {
+            e.preventDefault();
+            if (loginPopup && signupPopup) {
+                signupPopup.classList.remove("active");
+                loginPopup.classList.add("active");
+            }
+        });
+    }
+
+    // Close popups
+    closePopups.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            if (loginPopup && signupPopup) {
+                loginPopup.classList.remove("active");
+                signupPopup.classList.remove("active");
             }
         });
     });
 
-    // Utility: show popup
-    function showPopup(popup) {
-        if (!popup) return;
-        popup.style.display = "flex";
-        popup.classList.add("active");
-    }
-
-    // Utility: hide popup
-    function hidePopup(popup) {
-        if (!popup) return;
-        popup.style.display = "none";
-        popup.classList.remove("active");
-    }
+    // Close popups when clicking outside
+    document.addEventListener("click", (e) => {
+        if (loginPopup && !loginPopup.contains(e.target) && !loginIcon.contains(e.target) && loginPopup.classList.contains("active")) {
+            loginPopup.classList.remove("active");
+        } else if (signupPopup && !signupPopup.contains(e.target) && !loginIcon.contains(e.target) && signupPopup.classList.contains("active")) {
+            signupPopup.classList.remove("active");
+        }
+    });
 });

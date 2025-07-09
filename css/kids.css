@@ -1,10 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+/* Kids’ Shoes Page Styles */
 
-/* General Reset */
+/* General Styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+    /* Offset for fixed header */
 }
 
 body {
@@ -14,55 +20,79 @@ body {
     line-height: 1.6;
 }
 
-/* Header */
+body.contact-active {
+    padding-bottom: 100px;
+}
+
+/* Header Styles */
 .main-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 40px;
+    padding: 15px 20px;
     background-color: #111;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    position: sticky;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: fixed;
     top: 0;
+    width: 100%;
     z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+.main-header:hover {
+    background-color: #222;
 }
 
 .logo-title {
     display: flex;
     align-items: center;
     gap: 10px;
+    z-index: 1200;
 }
 
 .logo-title a {
-    color: white;
-    text-decoration: none;
     display: flex;
     align-items: center;
     gap: 10px;
+    text-decoration: none;
 }
 
 .header-logo {
     height: 90px;
+    transition: transform 0.3s ease;
+}
+
+.header-logo:hover {
+    transform: scale(1.05);
 }
 
 .brand-name {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 700;
-    color: white;
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+.brand-name:hover {
+    color: #3a86ff;
 }
 
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 25px;
+    gap: 30px;
 }
 
 .nav-item {
-    font-weight: 500;
-    cursor: pointer;
-    color: white;
+    font-weight: 600;
+    color: #fff;
     text-decoration: none;
-    position: relative;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-item:hover {
+    color: #3a86ff;
+    transform: translateY(-2px);
 }
 
 .dropdown {
@@ -72,48 +102,53 @@ body {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #222;
-    /* DARK background */
-    top: 28px;
+    top: 30px;
     left: 0;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-    border-radius: 4px;
+    background-color: #222;
+    min-width: 150px;
+    padding: 5px 0;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     z-index: 10;
-    min-width: 140px;
 }
 
-.dropdown-content a {
-    padding: 8px 16px;
-    display: block;
-    text-decoration: none;
-    color: white;
-    /* White text */
-    font-weight: 500;
-    transition: background-color 0.3s ease
-}
-
-.dropdown-content a:hover {
-    background-color: #3a86ff;
-    color: white;
-}
-
-/* Show dropdown on hover */
 .dropdown:hover .dropdown-content {
     display: block;
 }
 
+.dropdown-content a {
+    display: block;
+    padding: 10px 20px;
+    color: #ccc;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: #3a86ff;
+    color: #fff;
+}
+
 .nav-actions {
     display: flex;
-    gap: 15px;
     align-items: center;
+    gap: 20px;
 }
 
 .search-box {
-    padding: 8px 14px;
-    border-radius: 20px;
-    border: 1px solid #ccc;
     width: 180px;
+    padding: 8px 14px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
     font-size: 14px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-box:focus {
+    border-color: #3a86ff;
+    box-shadow: 0 0 5px rgba(58, 134, 255, 0.5);
+    outline: none;
 }
 
 .icon {
@@ -121,20 +156,52 @@ body {
     height: 24px;
     cursor: pointer;
     filter: brightness(0) invert(1);
+    transition: transform 0.3s ease;
 }
 
-/* Login & Signup Popup */
+.icon:hover {
+    transform: scale(1.1);
+}
+
+.login-btn {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    filter: brightness(0) invert(1);
+    transition: transform 0.3s ease;
+}
+
+.login-btn:hover {
+    transform: scale(1.1);
+}
+
+.menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    font-size: 28px;
+    color: #fff;
+    z-index: 1200;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.menu-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* Login/Signup Popup Styles */
 .login-popup {
     display: none;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.3s ease;
     position: fixed;
     inset: 0;
     background-color: rgba(0, 0, 0, 0.6);
     justify-content: center;
     align-items: center;
     z-index: 9999;
+    transition: opacity 0.3s ease;
 }
 
 .login-popup.active {
@@ -144,13 +211,21 @@ body {
 }
 
 .popup-content {
-    background: white;
+    background: #fff;
     padding: 30px 40px;
     border-radius: 12px;
     max-width: 400px;
-    width: 100%;
+    width: 90%;
     position: relative;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.popup-content h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #111;
+    text-align: center;
 }
 
 .close-popup {
@@ -160,11 +235,17 @@ body {
     background: transparent;
     border: none;
     font-size: 24px;
-    cursor: pointer;
     color: #222;
+    cursor: pointer;
+    transition: color 0.3s ease;
 }
 
-form input {
+.close-popup:hover {
+    color: #3a86ff;
+}
+
+.login-popup form input,
+.login-popup form textarea {
     width: 100%;
     padding: 12px 14px;
     margin-bottom: 18px;
@@ -173,11 +254,11 @@ form input {
     font-size: 14px;
 }
 
-form button {
+.login-popup form button {
     width: 100%;
-    background-color: #333;
-    color: white;
     padding: 12px 14px;
+    background-color: #333;
+    color: #fff;
     border: none;
     border-radius: 8px;
     font-weight: 700;
@@ -185,7 +266,7 @@ form button {
     transition: background-color 0.3s ease;
 }
 
-form button:hover {
+.login-popup form button:hover {
     background-color: #111;
 }
 
@@ -198,24 +279,61 @@ form button:hover {
 .signup-text a {
     color: #3a86ff;
     text-decoration: none;
-    cursor: pointer;
+    transition: text-decoration 0.3s ease;
 }
 
 .signup-text a:hover {
     text-decoration: underline;
 }
 
-/* Product Grid */
-.shoe-item img {
-    height: 300px;
-    width: 100%;
-    object-fit: cover;
-    border-radius: 8px;
-    transition: transform 0.3s ease;
-    margin-bottom: 10px;
+/* Main Content Styles */
+main.container {
+    margin-top: 120px;
+    /* Offset for fixed header */
+    padding: 2rem 15px;
 }
 
-.shoe-item img:hover {
+h2.mb-4 {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    color: #111;
+}
+
+.row.gx-3.gy-4 {
+    margin: 0;
+}
+
+.col-md-4.text-center.shoe-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.col-md-4.text-center.shoe-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.shoe-item a {
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+}
+
+.arrival-image {
+    width: 100%;
+    max-width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease;
+}
+
+.arrival-image:hover {
     transform: scale(1.03);
 }
 
@@ -224,9 +342,8 @@ form button:hover {
     padding: 10px 15px;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    display: inline-block;
     width: 100%;
-    box-sizing: border-box;
+    text-align: center;
 }
 
 .arrival-name {
@@ -238,25 +355,27 @@ form button:hover {
 
 .arrival-price {
     font-size: 15px;
-    color: #3a86ff;
     font-weight: 700;
+    color: #3a86ff;
     margin: 0;
 }
 
-/* Footer */
+/* Footer Styles */
 .footer {
     background-color: #111;
     color: #fff;
-    padding: 60px 40px 40px;
+    padding: 30px 15px 15px;
+    position: relative;
+    margin: 0;
 }
 
 .footer-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 30px;
+    gap: 20px;
     max-width: 1200px;
     margin: 0 auto;
-    padding-bottom: 40px;
+    padding-bottom: 20px;
     border-bottom: 1px solid #333;
 }
 
@@ -271,6 +390,23 @@ form button:hover {
     margin-bottom: 12px;
 }
 
+.footer-column p {
+    font-size: 14px;
+    color: #ccc;
+    margin-bottom: 8px;
+}
+
+.footer-column a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
 .footer-column ul {
     list-style: none;
     padding: 0;
@@ -280,50 +416,185 @@ form button:hover {
     margin-bottom: 8px;
 }
 
-.footer-column ul li a {
-    color: #ccc;
-    text-decoration: none;
+.footer-contact-form input,
+.footer-contact-form textarea {
+    width: 100%;
+    padding: 8px;
+    margin: 6px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    background-color: #222;
+    color: #fff;
 }
 
-.footer-column ul li a:hover {
+.footer-contact-form button {
+    background-color: #333;
     color: #fff;
-    text-decoration: underline;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+}
+
+.footer-contact-form button:hover {
+    background-color: #111;
 }
 
 .payment-image {
-    margin-top: 10px;
     max-width: 100%;
+    margin-top: 10px;
 }
 
 .footer-bottom {
     text-align: center;
-    padding: 20px 10px;
+    padding: 10px;
     font-size: 13px;
     color: #aaa;
 }
 
-/* Responsive */
+/* Move to Top Button */
+.move-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+}
+
+.move-to-top.show {
+    opacity: 1;
+}
+
+.move-to-top:hover {
+    background-color: #111;
+}
+
+/* Responsive Styles */
 @media (max-width: 768px) {
     .main-header {
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 10px 15px;
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+
+    .menu-toggle {
+        display: block;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+    }
+
+    .nav-links,
+    .nav-actions {
+        display: none;
+        position: fixed;
+        top: 80px;
+        right: -100%;
         flex-direction: column;
-        gap: 15px;
+        align-items: center;
+        width: 250px;
+        background-color: #111;
+        padding: 20px;
+        transition: right 0.3s ease-in-out;
+        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+        z-index: 1100;
+    }
+
+    .nav-links.show,
+    .nav-actions.show {
+        display: flex;
+        right: 0;
+    }
+
+    .nav-item {
+        padding: 15px 10px;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid #222;
+        font-size: 16px;
+    }
+
+    .dropdown-content {
+        position: static;
+        background-color: #333;
+        box-shadow: none;
+        width: 100%;
+        padding: 0;
+    }
+
+    .dropdown-content a {
+        padding: 10px 20px;
         text-align: center;
     }
 
-    .nav-links {
-        flex-direction: column;
-        gap: 10px;
+    .search-box {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    main.container {
+        margin-top: 100px;
+        padding: 1.5rem 10px;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .popup-content {
+        padding: 20px;
+        max-width: 90%;
+    }
+
+    body.contact-active .footer {
+        padding-top: 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-logo {
+        height: 60px;
+    }
+
+    .brand-name {
+        font-size: 18px;
+    }
+
+    .nav-links,
+    .nav-actions {
+        width: 200px;
     }
 
     .search-box {
         width: 100%;
     }
 
-    .footer-container {
-        grid-template-columns: 1fr 1fr;
+    .col-md-4.text-center.shoe-item {
+        padding: 5px;
     }
 
-    .popup-content {
-        padding: 20px;
+    .arrival-image {
+        max-width: 250px;
+        height: 250px;
+    }
+
+    .footer-column h4 {
+        font-size: 16px;
     }
 }

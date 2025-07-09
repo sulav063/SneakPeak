@@ -1,17 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+/* Men’s Shoes Page Styles */
 
-/* General Reset */
+/* General Styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+    /* Offset for fixed header */
+}
+
+/* Import font */
 body {
     font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
     background-color: #f9f9f9;
     color: #333;
     line-height: 1.6;
+}
+
+body.contact-active {
+    padding-bottom: 100px;
 }
 
 /* Header */
@@ -21,16 +34,23 @@ body {
     align-items: center;
     padding: 15px 40px;
     background-color: #111;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    position: sticky;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: fixed;
     top: 0;
+    width: 100%;
     z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+.main-header:hover {
+    background-color: #222;
 }
 
 .logo-title {
     display: flex;
     align-items: center;
     gap: 10px;
+    z-index: 1200;
 }
 
 .logo-title a {
@@ -43,26 +63,42 @@ body {
 
 .header-logo {
     height: 90px;
+    transition: transform 0.3s ease;
+}
+
+.header-logo:hover {
+    transform: scale(1.05);
 }
 
 .brand-name {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 700;
     color: white;
+    transition: color 0.3s ease;
+}
+
+.brand-name:hover {
+    color: #3a86ff;
 }
 
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 25px;
+    gap: 30px;
 }
 
 .nav-item {
-    font-weight: 500;
+    font-weight: 600;
     cursor: pointer;
     color: white;
     text-decoration: none;
     position: relative;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-item:hover {
+    color: #3a86ff;
+    transform: translateY(-2px);
 }
 
 .dropdown {
@@ -73,21 +109,22 @@ body {
     display: none;
     position: absolute;
     background-color: #222;
-    top: 28px;
+    top: 30px;
     left: 0;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
     z-index: 10;
-    min-width: 140px;
+    min-width: 150px;
+    padding: 5px 0;
 }
 
 .dropdown-content a {
-    padding: 8px 16px;
+    padding: 10px 20px;
     display: block;
     text-decoration: none;
-    color: white;
+    color: #ccc;
     font-weight: 500;
-    transition: background-color 0.3s ease
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .dropdown-content a:hover {
@@ -95,14 +132,13 @@ body {
     color: white;
 }
 
-/* Show dropdown on hover */
 .dropdown:hover .dropdown-content {
     display: block;
 }
 
 .nav-actions {
     display: flex;
-    gap: 15px;
+    gap: 20px;
     align-items: center;
 }
 
@@ -112,6 +148,13 @@ body {
     border: 1px solid #ccc;
     width: 180px;
     font-size: 14px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-box:focus {
+    border-color: #3a86ff;
+    box-shadow: 0 0 5px rgba(58, 134, 255, 0.5);
+    outline: none;
 }
 
 .icon {
@@ -119,9 +162,45 @@ body {
     height: 24px;
     cursor: pointer;
     filter: brightness(0) invert(1);
+    transition: transform 0.3s ease;
 }
 
-/* Login & Signup Popup */
+.icon:hover {
+    transform: scale(1.1);
+}
+
+.login-btn {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    filter: brightness(0) invert(1);
+    transition: transform 0.3s ease;
+}
+
+.login-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Mobile Nav Button */
+.menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    font-size: 28px;
+    color: white;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1200;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.menu-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* Login/Signup Popup Styles */
 .login-popup {
     display: none;
     opacity: 0;
@@ -146,9 +225,17 @@ body {
     padding: 30px 40px;
     border-radius: 12px;
     max-width: 400px;
-    width: 100%;
+    width: 90%;
     position: relative;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.popup-content h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #111;
+    text-align: center;
 }
 
 .close-popup {
@@ -158,11 +245,17 @@ body {
     background: transparent;
     border: none;
     font-size: 24px;
-    cursor: pointer;
     color: #222;
+    cursor: pointer;
+    transition: color 0.3s ease;
 }
 
-form input {
+.close-popup:hover {
+    color: #3a86ff;
+}
+
+.login-popup form input,
+.login-popup form textarea {
     width: 100%;
     padding: 12px 14px;
     margin-bottom: 18px;
@@ -171,11 +264,11 @@ form input {
     font-size: 14px;
 }
 
-form button {
+.login-popup form button {
     width: 100%;
+    padding: 12px 14px;
     background-color: #333;
     color: white;
-    padding: 12px 14px;
     border: none;
     border-radius: 8px;
     font-weight: 700;
@@ -183,7 +276,7 @@ form button {
     transition: background-color 0.3s ease;
 }
 
-form button:hover {
+.login-popup form button:hover {
     background-color: #111;
 }
 
@@ -196,24 +289,64 @@ form button:hover {
 .signup-text a {
     color: #3a86ff;
     text-decoration: none;
-    cursor: pointer;
+    transition: text-decoration 0.3s ease;
 }
 
 .signup-text a:hover {
     text-decoration: underline;
 }
 
-/* Product Grid */
-.shoe-item img {
-    height: 300px;
-    width: 100%;
-    object-fit: cover;
-    border-radius: 8px;
-    transition: transform 0.3s ease;
-    margin-bottom: 10px;
+/* Main Content Styles */
+main.container {
+    margin-top: 120px;
+    /* Offset for fixed header */
+    padding: 2rem 15px;
 }
 
-.shoe-item img:hover {
+h2.mb-4 {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    color: #111;
+}
+
+.row.gx-3.gy-4 {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.col-md-4.text-center.shoe-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.col-md-4.text-center.shoe-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.shoe-item a {
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+}
+
+.arrival-image {
+    width: 100%;
+    max-width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease;
+}
+
+.arrival-image:hover {
     transform: scale(1.03);
 }
 
@@ -222,9 +355,8 @@ form button:hover {
     padding: 10px 15px;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    display: inline-block;
     width: 100%;
-    box-sizing: border-box;
+    text-align: center;
 }
 
 .arrival-name {
@@ -236,26 +368,34 @@ form button:hover {
 
 .arrival-price {
     font-size: 15px;
-    color: #3a86ff;
     font-weight: 700;
+    color: #3a86ff;
     margin: 0;
 }
 
-/* Footer */
+/* Footer Styles */
 .footer {
     background-color: #111;
     color: #fff;
-    padding: 60px 40px 40px;
+    padding: 60px 20px 40px;
+    position: relative;
 }
 
 .footer-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
     max-width: 1200px;
     margin: 0 auto;
     padding-bottom: 40px;
     border-bottom: 1px solid #333;
+    align-items: start;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .footer-logo {
@@ -272,6 +412,7 @@ form button:hover {
 .footer-column ul {
     list-style: none;
     padding: 0;
+    width: 100%;
 }
 
 .footer-column ul li {
@@ -291,6 +432,7 @@ form button:hover {
 .payment-image {
     margin-top: 10px;
     max-width: 100%;
+    width: 200px;
 }
 
 .footer-bottom {
@@ -300,28 +442,274 @@ form button:hover {
     color: #aaa;
 }
 
-/* Responsive */
+/* Move to Top Button */
+.move-to-top {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 1000;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.move-to-top.show {
+    display: block;
+    opacity: 1;
+}
+
+.move-to-top:hover {
+    background-color: #555;
+    transform: scale(1.1);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+
+    .custom-arrival-prev,
+    .custom-arrival-next {
+        display: none;
+    }
+
+    .brands-list {
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .categories-title,
+    .brands-title {
+        font-size: 20px;
+    }
+
+    .carousel-image {
+        height: 450px;
+    }
+
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media (max-width: 768px) {
     .main-header {
-        flex-direction: column;
-        gap: 15px;
-        text-align: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 10px 20px;
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+
+    .menu-toggle {
+        display: block;
+        position: absolute;
+        top: 15px;
+        right: 20px;
     }
 
     .nav-links {
+        position: fixed;
+        top: 80px;
+        right: -100%;
         flex-direction: column;
-        gap: 10px;
+        align-items: center;
+        width: 250px;
+        height: 100vh;
+        background-color: #111;
+        padding: 20px;
+        transition: right 0.3s ease-in-out;
+        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+        z-index: 1100;
+    }
+
+    .nav-links.show {
+        right: 0;
+    }
+
+    .nav-item {
+        padding: 15px 10px;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid #222;
+        font-size: 16px;
+    }
+
+    .dropdown-content {
+        position: static;
+        background-color: #333;
+        box-shadow: none;
+        width: 100%;
+        padding: 0;
+    }
+
+    .dropdown-content a {
+        padding: 10px 20px;
+        text-align: center;
+    }
+
+    .nav-actions {
+        display: none;
+        /* Hide by default on small screens */
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        width: 100%;
+        margin: 20px 0;
+    }
+
+    .nav-actions.show {
+        display: flex;
+        /* Show when menu is open */
     }
 
     .search-box {
         width: 100%;
+        margin-top: 0;
+    }
+
+    .carousel-image {
+        height: 300px;
+    }
+
+    .brand-image {
+        width: 85px;
+        height: 60px;
+    }
+
+    .limited-offer-title {
+        font-size: 1.5rem;
+    }
+
+    .limited-offer-subtitle {
+        font-size: 1rem;
+    }
+
+    .newsletter-title {
+        font-size: 20px;
+    }
+
+    .newsletter-input {
+        min-width: 180px;
     }
 
     .footer-container {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
+        gap: 30px;
     }
 
     .popup-content {
         padding: 20px;
+    }
+
+    .footer-column h4 {
+        font-size: 16px;
+    }
+
+    .newsletter-section {
+        padding: 30px 15px;
+    }
+
+    /* New Arrivals: One shoe per slide on small screens */
+    #newArrivalsCarousel .carousel-item .arrival-item {
+        display: block;
+        text-align: center;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    #newArrivalsCarousel .carousel-item .row {
+        display: none;
+        /* Remove column layout */
+    }
+
+    /* Limited Offer Banner: Stack text below image on small screens */
+    .limited-offer-banner {
+        flex-direction: column;
+        height: auto;
+        margin: 20px auto;
+        max-height: none;
+    }
+
+    .limited-offer-banner .offer-image {
+        height: 250px;
+        width: 100%;
+        flex: none;
+    }
+
+    .limited-offer-text {
+        flex: none;
+        width: 100%;
+        padding: 1.5rem 1rem;
+        text-align: center;
+        align-items: center;
+    }
+
+    .limited-offer-title {
+        font-size: 1.2rem;
+        margin: 0 0 0.5rem 0;
+    }
+
+    .limited-offer-subtitle {
+        font-size: 0.9rem;
+        margin: 0 0 1rem 0;
+        max-width: 100%;
+    }
+
+    .grab-btn {
+        padding: 0.5rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    /* Add white space between navbar and footer when at #contact on small screens */
+    body.contact-active .footer {
+        padding-top: 80px;
+        /* Add white space */
+    }
+}
+
+@media (max-width: 480px) {
+    .brand-image {
+        width: 65px;
+        height: 50px;
+    }
+
+    .limited-offer-title {
+        font-size: 1rem;
+    }
+
+    .limited-offer-subtitle {
+        font-size: 0.8rem;
+    }
+
+    .newsletter-title {
+        font-size: 18px;
+    }
+
+    .newsletter-input {
+        min-width: 150px;
+    }
+
+    .carousel-image {
+        height: 240px;
+    }
+
+    .arrival-image {
+        height: 200px;
+    }
+
+    .nav-actions {
+        margin-left: 0;
+        /* Reset margin for consistency */
+    }
+
+    .search-box {
+        width: 100%;
     }
 }

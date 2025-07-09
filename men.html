@@ -3,18 +3,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Men’s Shoes – SneakPeak</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Men’s Shoes - SneakPeak</title>
     <link rel="stylesheet" href="css/men.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- Google Identity Services -->
     <script src="https://accounts.google.com/gsi/client?hl=en" async defer></script>
     <script>
-        function handleCredentialResponse(response) {
-            console.log("Google login token:", response.credential);
-            // TODO: Send token to backend to validate and login user
-        }
-
         window.onload = function () {
             google.accounts.id.initialize({
                 client_id: "YOUR_GOOGLE_CLIENT_ID", // Replace with your actual client ID
@@ -33,45 +29,47 @@
                 { theme: "outline", size: "large", width: 280 }
             );
         };
+
+        function handleCredentialResponse(response) {
+            console.log("Google login token:", response.credential);
+            // TODO: Send token to backend to validate and login user
+            // Example: fetch('/api/login', { method: 'POST', body: JSON.stringify({ token: response.credential }) });
+        }
     </script>
 </head>
 
 <body>
-
-    <!-- HEADER -->
     <header class="main-header">
-        <a href="index.html" class="logo-title" style="text-decoration:none; display:flex; align-items:center; gap:10px;">
-    <img src="images/sneakpeak.png" alt="Logo" class="header-logo" />
-    <span class="brand-name">SneakPeak</span>
-</a>
-
-        <nav class="nav-links">
-            <div class="dropdown">
-                <a href="#" id="shopToggle" class="nav-item">Shop ▾</a>
-                <div id="shopMenu" class="dropdown-content">
-                    <a href="men.html">Men</a>
-                    <a href="women.html">Women</a>
-                    <a href="kids.html">Kids</a>
-                </div>
+        <div class="logo-title">
+            <a href="index.html">
+                <img src="images/sneakpeak.png" alt="Logo" class="header-logo">
+                <span class="brand-name">SneakPeak</span>
+            </a>
+        </div>
+        <button class="menu-toggle" id="menuToggle">☰</button>
+        <nav class="nav-links" id="navbarMenu">
+            <a href="#" id="shopToggle" class="nav-item dropdown">Shop ▾</a>
+            <div id="shopMenu" class="dropdown-content">
+                <a href="men.html">Men</a>
+                <a href="women.html">Women</a>
+                <a href="kids.html">Kids</a>
             </div>
-            <a href="index.html#brands" class="nav-item">Brands</a>
-            <a href="index.html#new-arrivals" class="nav-item">New Arrivals</a>
+            <a href="#brands" class="nav-item">Brands</a>
+            <a href="#new-arrivals" class="nav-item">New Arrivals</a>
             <a href="#contact" class="nav-item">Contact</a>
-
         </nav>
         <div class="nav-actions">
-            <input type="text" class="search-box" placeholder="Search">
+            <input type="text" class="search-box" placeholder="Search...">
             <img src="images/cart.png" alt="Cart" class="icon">
-            <img src="images/login.png" alt="Login" class="icon login-icon">
+            <img src="images/login.png" alt="Login" class="login-btn icon">
         </div>
     </header>
 
-    <!-- LOGIN POPUP -->
     <div id="loginPopup" class="login-popup">
         <div class="popup-content">
-            <span class="close-popup">&times;</span>
+            <button class="close-popup">×</button>
             <h3>Welcome Back!</h3>
-            <form>
+            <form id="loginForm">
                 <input type="email" placeholder="Email" required>
                 <input type="password" placeholder="Password" required>
                 <button type="submit">Login</button>
@@ -82,12 +80,11 @@
         </div>
     </div>
 
-    <!-- SIGNUP POPUP -->
     <div id="signupPopup" class="login-popup">
         <div class="popup-content">
-            <span class="close-popup">&times;</span>
+            <button class="close-popup">×</button>
             <h3>Create an Account</h3>
-            <form>
+            <form id="signupForm">
                 <input type="text" placeholder="Full Name" required>
                 <input type="email" placeholder="Email" required>
                 <input type="password" placeholder="Password" required>
@@ -99,13 +96,13 @@
         </div>
     </div>
 
-    <!-- PRODUCT GRID -->
     <main class="container my-5">
         <h2 class="mb-4">Men’s Shoes</h2>
         <div class="row gx-3 gy-4">
             <div class="col-md-4 text-center shoe-item">
                 <a href="product.html?id=men1">
-                    <img src="images/men/Addidas ULTRABOOST 1.0 SHOES.jpg" class="arrival-image">
+                    <img src="images/men/Addidas ULTRABOOST 1.0 SHOES.jpg" alt="Addidas Ultraboost 1.0"
+                        class="arrival-image">
                     <div class="arrival-info">
                         <p class="arrival-name">Addidas Ultraboost 1.0</p>
                         <p class="arrival-price">Rs. 4100</p>
@@ -114,7 +111,8 @@
             </div>
             <div class="col-md-4 text-center shoe-item">
                 <a href="product.html?id=men2">
-                    <img src="images/men/Air Jordan 40 The Classic.jpg" class="arrival-image">
+                    <img src="images/men/Air Jordan 40 The Classic.jpg" alt="Air Jordan 40 The Classic"
+                        class="arrival-image">
                     <div class="arrival-info">
                         <p class="arrival-name">Air Jordan 40 The Classic</p>
                         <p class="arrival-price">Rs. 4200</p>
@@ -123,7 +121,8 @@
             </div>
             <div class="col-md-4 text-center shoe-item">
                 <a href="product.html?id=men3">
-                    <img src="images/men/F50 Messi Elite Firm Ground Cleats.jpg" class="arrival-image">
+                    <img src="images/men/F50 Messi Elite Firm Ground Cleats.jpg"
+                        alt="F50 Messi Elite Firm Ground Cleats" class="arrival-image">
                     <div class="arrival-info">
                         <p class="arrival-name">F50 Messi Elite Firm Ground Cleats</p>
                         <p class="arrival-price">Rs. 4300</p>
@@ -132,7 +131,7 @@
             </div>
             <div class="col-md-4 text-center shoe-item">
                 <a href="product.html?id=men4">
-                    <img src="images/men/Fila Black Trel.jpg" class="arrival-image">
+                    <img src="images/men/Fila Black Trel.jpg" alt="Fila Black Trel" class="arrival-image">
                     <div class="arrival-info">
                         <p class="arrival-name">Fila Black Trel</p>
                         <p class="arrival-price">Rs. 4400</p>
@@ -141,7 +140,8 @@
             </div>
             <div class="col-md-4 text-center shoe-item">
                 <a href="product.html?id=men5">
-                    <img src="images/men/MBPUMA x LAMELO BALL MB.04.jpg" class="arrival-image">
+                    <img src="images/men/MBPUMA x LAMELO BALL MB.04.jpg" alt="MBPUMA x LAMELO BALL MB.04"
+                        class="arrival-image">
                     <div class="arrival-info">
                         <p class="arrival-name">MBPUMA x LAMELO BALL MB.04</p>
                         <p class="arrival-price">Rs. 4500</p>
@@ -150,7 +150,7 @@
             </div>
             <div class="col-md-4 text-center shoe-item">
                 <a href="product.html?id=men6">
-                    <img src="images/men/NB 574 core.jpg" class="arrival-image">
+                    <img src="images/men/NB 574 core.jpg" alt="NB 574 core" class="arrival-image">
                     <div class="arrival-info">
                         <p class="arrival-name">NB 574 core</p>
                         <p class="arrival-price">Rs. 4600</p>
@@ -159,7 +159,7 @@
             </div>
             <div class="col-md-4 text-center shoe-item">
                 <a href="product.html?id=men7">
-                    <img src="images/men/NB 9060.jpg" class="arrival-image">
+                    <img src="images/men/NB 9060.jpg" alt="NB 9060" class="arrival-image">
                     <div class="arrival-info">
                         <p class="arrival-name">NB 9060</p>
                         <p class="arrival-price">Rs. 4700</p>
@@ -168,7 +168,7 @@
             </div>
             <div class="col-md-4 text-center shoe-item">
                 <a href="product.html?id=men8">
-                    <img src="images/men/NIKE+GATO.jpg" class="arrival-image">
+                    <img src="images/men/NIKE+GATO.jpg" alt="NIKE+GATO" class="arrival-image">
                     <div class="arrival-info">
                         <p class="arrival-name">NIKE+GATO</p>
                         <p class="arrival-price">Rs. 4800</p>
@@ -177,7 +177,8 @@
             </div>
             <div class="col-md-4 text-center shoe-item">
                 <a href="product.html?id=men9">
-                    <img src="images/men/PUMA x LAMELO BALL MB.04.jpg" class="arrival-image">
+                    <img src="images/men/PUMA x LAMELO BALL MB.04.jpg" alt="PUMA x LAMELO BALL MB.04"
+                        class="arrival-image">
                     <div class="arrival-info">
                         <p class="arrival-name">PUMA x LAMELO BALL MB.04</p>
                         <p class="arrival-price">Rs. 4900</p>
@@ -186,7 +187,7 @@
             </div>
             <div class="col-md-4 text-center shoe-item">
                 <a href="product.html?id=men10">
-                    <img src="images/men/NB 740.jpg" class="arrival-image">
+                    <img src="images/men/NB 740.jpg" alt="NB 740" class="arrival-image">
                     <div class="arrival-info">
                         <p class="arrival-name">NB 740</p>
                         <p class="arrival-price">Rs. 5000</p>
@@ -198,14 +199,11 @@
 
     <footer class="footer" id="contact">
         <div class="footer-container">
-            <!-- Logo -->
             <div class="footer-column">
-                <img src="images/sneakpeak.png" alt="Logo" class="footer-logo" />
+                <img src="images/sneakpeak.png" alt="Logo" class="footer-logo">
                 <span class="brand-name">SneakPeak</span>
                 <p>Providing high-quality, stylish products for your wardrobe.</p>
             </div>
-
-            <!-- Contact -->
             <div class="footer-column">
                 <h4>Contact Us</h4>
                 <p>Email: <a href="mailto:support@sneakpeak.com">support@sneakpeak.com</a></p>
@@ -220,34 +218,31 @@
                         style="background: #444; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer;">Send</button>
                 </form>
             </div>
-
-            <!-- Support -->
             <div class="footer-column">
                 <h4>Support</h4>
                 <ul>
+                    <li><a href="#">About Us</a></li>
                     <li><a href="#">FAQs</a></li>
                     <li><a href="#">Cookie Policy</a></li>
                     <li><a href="#">Terms of Use</a></li>
                 </ul>
             </div>
-
-            <!-- Payment Methods -->
             <div class="footer-column">
                 <h4>Payment Methods</h4>
-                <img src="images/payment-methods.jpg" alt="Payment Methods" class="payment-image" />
+                <img src="images/payment-methods.jpg" alt="Payment Methods" class="payment-image">
             </div>
         </div>
-
         <div class="footer-bottom">
             <p>© 2025 SneakPeak. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Scripts -->
+
+    <button id="moveToTop" class="move-to-top">↑</button>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/navbar.js"></script>
     <script src="js/login.js"></script>
-
 </body>
 
 </html>
