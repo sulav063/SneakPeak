@@ -409,6 +409,7 @@ h2.mb-4 {
     background-color: #111;
     color: #fff;
     padding: 15px 10px;
+    /* Reduced padding for smaller screens */
     position: relative;
     width: 100%;
     margin-top: auto;
@@ -417,6 +418,7 @@ h2.mb-4 {
 .footer-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    /* Adjusted min width for better stacking */
     gap: 15px;
     max-width: 1200px;
     margin: 0 auto;
@@ -433,11 +435,13 @@ h2.mb-4 {
 
 .footer-logo {
     height: 40px;
+    /* Reduced for smaller screens */
     margin-bottom: 5px;
 }
 
 .footer-column h4 {
     font-size: 16px;
+    /* Reduced base font size */
     font-weight: 600;
     margin-bottom: 8px;
 }
@@ -456,6 +460,7 @@ h2.mb-4 {
     color: #ccc;
     text-decoration: none;
     font-size: 13px;
+    /* Adjusted for readability */
 }
 
 .footer-column ul li a:hover {
@@ -463,60 +468,18 @@ h2.mb-4 {
     text-decoration: underline;
 }
 
-.footer-column p {
-    font-size: 14px;
-    color: #ccc;
-    margin-bottom: 8px;
-}
-
-.footer-column a {
-    color: #ccc;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.footer-column a:hover {
-    color: #fff;
-    text-decoration: underline;
-}
-
-.footer-contact-form input,
-.footer-contact-form textarea {
-    width: 100%;
-    padding: 8px;
-    margin: 6px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 0.9rem;
-    background-color: #222;
-    color: #fff;
-}
-
-.footer-contact-form button {
-    background-color: #333;
-    color: #fff;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    transition: background-color 0.3s ease;
-}
-
-.footer-contact-form button:hover {
-    background-color: #111;
-}
-
 .payment-image {
     margin-top: 5px;
     max-width: 100%;
     width: 150px;
+    /* Reduced width for smaller screens */
 }
 
 .footer-bottom {
     text-align: center;
     padding: 8px 0;
     font-size: 12px;
+    /* Reduced for smaller screens */
     color: #aaa;
 }
 

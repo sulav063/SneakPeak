@@ -301,7 +301,6 @@ form button:hover {
     overflow: visible;
     position: relative;
     margin-top: 80px;
-    /* Offset for fixed header */
 }
 
 .carousel-image {
@@ -573,9 +572,9 @@ form button:hover {
 
 .limited-offer-banner .offer-image {
     flex: 1;
-    object-fit: cover;
-    height: 350px;
+    object-fit: contain; /* Changed from cover to contain to show full image */
     width: 100%;
+    max-height: 350px; /* Limit max height to match banner height */
 }
 
 .limited-offer-text {
@@ -785,15 +784,15 @@ form button:hover {
     display: none;
     background: transparent;
     border: none;
-    font-size: 28px;
+    font-size: 18px;
     color: white;
     position: absolute;
-    top: 15px;
+    top: 20px;
     right: 15px;
     z-index: 1200;
     cursor: pointer;
     transition: transform 0.3s ease;
-    padding: 6px 10px;
+    padding: 20px 10px;
     background-color: #333;
     border-radius: 4px;
     border: 1px solid #444;
@@ -946,6 +945,40 @@ form button:hover {
 
     .limited-offer-subtitle {
         font-size: 1rem;
+    }
+
+    /* Adjust Limited Offer Banner for small screens */
+    .limited-offer-banner {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .limited-offer-banner .offer-image {
+        width: 100%;
+        object-fit: contain; /* Ensure full image is shown */
+        max-height: none; /* Remove fixed height to show full image */
+    }
+
+    .limited-offer-text {
+        flex: none;
+        padding: 1rem;
+        text-align: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .limited-offer-title {
+        font-size: 1.2rem;
+        margin: 0.5rem 0;
+    }
+
+    .limited-offer-subtitle {
+        font-size: 0.9rem;
+        margin: 0.5rem 0;
+    }
+
+    .grab-btn {
+        padding: 0.5rem 1.5rem;
     }
 
     .newsletter-title {
